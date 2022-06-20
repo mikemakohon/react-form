@@ -1,0 +1,33 @@
+form {
+  margin-top: 20px;
+  padding: 30px 60px;
+  display: inline-block;
+  border: 2px solid #000000;
+}
+
+input {
+  display: block;
+  margin-top: 20px;
+  padding: 9px 40px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+input[type="name"] {
+  border-color: coral;
+}
+
+input[type="email"] {
+  border-color: lightblue;
+}
+
+input::placeholder {
+  color: #333333;
+}
+
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
