@@ -31,36 +31,7 @@ class Form extends Component {
   };
 
   handleReset = () => {
-    const {
-      fields,
-      fields: { name, email, password, passwordConfirm },
-    } = this.state;
-
-    this.setState({
-      fields: {
-        ...fields,
-        name: {
-          ...name,
-          value: "",
-          error: false,
-        },
-        email: {
-          ...email,
-          value: "",
-          error: false,
-        },
-        password: {
-          ...password,
-          value: "",
-          error: false,
-        },
-        passwordConfirm: {
-          ...passwordConfirm,
-          value: "",
-          error: false,
-        },
-      },
-    });
+    this.setState({ ...data });
   };
 
   handleSubmit = (event) => {
@@ -87,7 +58,7 @@ class Form extends Component {
     } = this;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onReset={handleReset}>
         <h1>Form</h1>
         {Object.values(fields).map((field) => (
           <Input
@@ -101,7 +72,7 @@ class Form extends Component {
           />
         ))}
         <div className="buttons">
-          <Button type="reset" title="Reset" onClick={handleReset} />
+          <Button type="reset" title="Reset" />
           <Button type="submit" title="Submit" />
         </div>
       </form>

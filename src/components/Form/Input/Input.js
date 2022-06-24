@@ -3,22 +3,20 @@ import "./Input.css";
 
 class Input extends Component {
   render() {
-    const { name, type, value, placeholder, onChange, error, title, required } =
-      this.props;
+    const { name, type, value, placeholder, onChange, error } = this.props;
 
     return (
       <div>
-        <label>
-          <input
-            required={required}
-            htmlFor={title}
-            name={name}
-            type={type}
-            value={value}
-            placeholder={placeholder}
-            onChange={onChange}
-          />
-        </label>
+        <label htmlFor={name}></label>
+        <input
+          id={name}
+          name={name}
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
+
         {error && <p className="error">{error}</p>}
       </div>
     );
