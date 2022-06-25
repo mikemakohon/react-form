@@ -8,22 +8,22 @@ class Form extends Component {
   state = { ...data };
 
   handleValueChange = (event) => {
-    const propName = event.target.name;
+    const eventTarget = event.target;
     const {
       fields,
       fields: {
-        [propName]: { validator },
+        [eventTarget.name]: { validator },
       },
     } = this.state;
 
-    const error = validator(event.target.value, fields.password.value);
+    const error = validator(eventTarget.value, fields.password.value);
 
     this.setState({
       fields: {
         ...fields,
-        [propName]: {
-          ...fields[propName],
-          value: event.target.value,
+        [eventTarget.name]: {
+          ...fields[eventTarget.name],
+          value: eventTarget.value,
           error,
         },
       },
@@ -50,15 +50,10 @@ class Form extends Component {
   };
 
   render() {
-    const {
-      handleReset,
-      handleSubmit,
-      handleValueChange,
-      state: { fields },
-    } = this;
+    const { fields } = this.state;
 
     return (
-      <form onSubmit={handleSubmit} onReset={handleReset}>
+      <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
         <h1>Form</h1>
         {Object.values(fields).map((field) => (
           <Input
@@ -68,7 +63,7 @@ class Form extends Component {
             key={field.title}
             placeholder={field.placeholder}
             error={field.error}
-            onChange={handleValueChange}
+            onChange={this.handleValueChange}
           />
         ))}
         <div className="buttons">
